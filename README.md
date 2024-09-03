@@ -14,8 +14,11 @@ You are provided with an initial JavaScript code file that includes:
 - A function to **generate unique IDs** for each task.
 - A **render function** to display tasks on the page.
 - An event listener for the **Enter key** to add new tasks.
+- An svg file in the /assets/svg/icon-delete.svg
 
 You need to complete the missing parts of the JavaScript code to make the to-do list fully functional.
+
+**Note: For the delete icon, please use /assets/svg/icon-delete.svg**
 
 ### Step 2: HTML Structure
 
