@@ -90,3 +90,86 @@ newTaskInput.addEventListener('keypress', function (e) {
   // start coding here
 });
 ```
+
+## Tujuan
+
+Tujuan dari tugas ini adalah untuk mempelajari cara memanipulasi DOM menggunakan JavaScript. Anda akan membuat aplikasi daftar tugas sederhana yang memungkinkan pengguna menambahkan tugas baru dengan menekan tombol Enter dan menghapus tugas menggunakan ikon hapus.
+
+## Petunjuk
+
+### Langkah 1: Pahami Kode yang Disediakan
+
+Anda diberikan file kode JavaScript awal yang mencakup:
+
+- Berfungsi untuk **menambah** dan **menghapus** tugas.
+- Fungsi untuk **menghasilkan ID unik** untuk setiap tugas.
+- **Fungsi render** untuk menampilkan tugas di halaman.
+- Pemroses acara untuk **tombol Enter** untuk menambahkan tugas baru.
+- File svg di /assets/svg/icon-delete.svg
+
+Anda perlu melengkapi bagian kode JavaScript yang hilang agar daftar tugas berfungsi penuh.
+
+**Catatan: Untuk ikon hapus, silakan gunakan /assets/svg/icon-delete.svg**
+
+### Langkah 2: Struktur HTML
+
+Pastikan struktur HTML Anda cocok dengan tata letak gambar yang disediakan:
+
+![Tata Letak Daftar Tugas](https://imgtr.ee/images/2024/09/03/8f84da3b2d0c4461315c9fc3c338881a.png)
+
+HTML Anda harus berisi:
+
+- Bidang input dengan kelas `.tugas baru` tempat pengguna dapat mengetik tugas baru.
+- Daftar tidak berurutan dengan kelas `.todo-list` tempat tugas akan ditampilkan.
+
+### Langkah 3: Lengkapi Kode JavaScript
+
+#### Kode Awal (untuk siswa memulai):
+
+```javascript
+'gunakan ketat';
+
+// ------------- jangan ubah kodenya kecuali Anda melihat "mulai coding di sini" ----------------
+
+// Pilih kolom masukan dan daftar tugas
+const newTaskInput = dokumen.querySelector('.tugas-baru');
+const todoList = dokumen.querySelector('.todo-list');
+
+// Berfungsi untuk menghasilkan ID unik untuk setiap tugas
+fungsi menghasilkanUniqueId() {
+  return '_' + Math.random().toString(36).slice(2, 11);
+}
+
+// Array untuk menyimpan item agenda dengan ID unik
+biarkan tugas = [];
+
+// Berfungsi untuk menambahkan item agenda baru ke dalam array
+fungsi addTask(teks tugas) {
+  tugas konstan = {
+    id: menghasilkanUniqueId(),
+    teks: teks tugas,
+  };
+  tugas.push(tugas);
+  memberikan();
+}
+
+// Berfungsi untuk menghapus item agenda berdasarkan ID-nya
+fungsi hapusTugas(id) {
+  tugas = tugas.filter((tugas) => tugas.id !== id);
+  memberikan();
+}
+
+fungsi isEmptyTask(taskText) {
+  kembalikan taskText.trim() === '';
+}
+
+// Berfungsi untuk merender daftar tugas
+fungsi render() {
+  todoList.innerHTML = '';
+
+  // Render setiap tugas dari array
+  tugas.forEach((tugas) => {
+    // mulai membuat kode di sini
+  });
+}
+```

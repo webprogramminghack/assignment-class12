@@ -41,6 +41,27 @@ function render() {
   // Render each task from the array
   tasks.forEach((task) => {
     // start coding here
+    const li = document.createElement('li');
+    li.textContent = task.text;
+    li.dataset.id = task.id;
+
+    // create a delete  button
+    const deleteButton = document.createElement('img');
+    deleteButton.src = './assets/svg/icon-delete.svg';
+    // Path ke ikon delete
+
+    //deleteButton.alt = 'Delete';
+    //deskripsi gambar
+    deleteButton.style.cursor = 'pointer';
+    //mengubah kursor saat hover
+
+    //menambahkan event listener untuk menghapus tugas
+    deleteButton.addEventListener('click', () => deleteTask(task.id));
+
+    //menambahkan elemen gambar ke dalam list item
+
+    li.appendChild(deleteButton);
+    todoList.appendChild(li);
   });
 }
 
@@ -50,4 +71,12 @@ function render() {
 // clear the input field after adding a new task
 newTaskInput.addEventListener('keypress', function (e) {
   // start coding here
+  if (e.key === 'Enter') {
+    const taskText = newTaskInput.value;
+    if (!isEmptyTask(taskText)) {
+      addTask(taskText);
+      newTaskInput.value = '';
+      // clear the input field
+    }
+  }
 });
