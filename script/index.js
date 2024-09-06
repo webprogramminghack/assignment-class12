@@ -41,6 +41,13 @@ function render() {
   // Render each task from the array
   tasks.forEach((task) => {
     // start coding here
+    todoList.innerHTML += `<li>
+      <p>${task.text}</p>
+      <img
+        class="delete-icon"
+        src="/assets/svg/icon-delete.svg"
+        onclick="deleteTask('${task.id}')">
+      </li>`;
   });
 }
 
@@ -50,4 +57,10 @@ function render() {
 // clear the input field after adding a new task
 newTaskInput.addEventListener('keypress', function (e) {
   // start coding here
+  if (e.key === 'Enter') {
+    if (!isEmptyTask(newTaskInput.value)) {
+      addTask(newTaskInput.value);
+      newTaskInput.value = '';
+    }
+  }
 });
