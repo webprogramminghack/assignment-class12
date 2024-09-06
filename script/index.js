@@ -41,6 +41,27 @@ function render() {
   // Render each task from the array
   tasks.forEach((task) => {
     // start coding here
+
+    // append list item
+    const li = document.createElement('li');
+    todoList.appendChild(li);
+
+    // append p for the text in the list
+    const taskText = document.createElement('p');
+    taskText.textContent = task.text;
+    li.appendChild(taskText);
+
+    // append delete image for every list
+    const deleteBtn = document.createElement('img');
+    deleteBtn.setAttribute('class', 'delete-icon');
+    deleteBtn.setAttribute('src', '/assets/svg/icon-delete.svg');
+
+    // add an event listener to delete the task when clicked
+    deleteBtn.addEventListener('click', function () {
+      deleteTask(task.id);
+    });
+
+    li.appendChild(deleteBtn);
   });
 }
 
@@ -50,4 +71,12 @@ function render() {
 // clear the input field after adding a new task
 newTaskInput.addEventListener('keypress', function (e) {
   // start coding here
+  if (e.key === 'Enter') {
+    const taskText = newTaskInput.value;
+
+    if (!isEmptyTask(taskText)) {
+      addTask(taskText);
+      newTaskInput.value = '';
+    }
+  }
 });
