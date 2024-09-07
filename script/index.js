@@ -37,17 +37,43 @@ function isEmptyTask(taskText) {
 // Function to render the to-do list
 function render() {
   todoList.innerHTML = '';
-
+  
   // Render each task from the array
   tasks.forEach((task) => {
     // start coding here
+    if (task.text !== '') {
+      todoList.innerHTML += `
+        <li>
+          <p>${task.text}</p>
+          <img src="/assets/svg/icon-delete.svg" alt="Delete To-Do" onclick="deleteTask('${task.id}')" class="delete-icon">
+        </li>
+      `;
+      newTaskInput.value = '';
+
+      // fix bug
+      tasks = tasks.filter((task) => task.text !== '');
+    }
   });
+
 }
 
 // add Event listener for adding a new to-do item when the Enter key is pressed
 // use the isEmptyTask function to check if the input field is empty, if it's empty, don't add a new task
 // use .value to get the value of the input field
 // clear the input field after adding a new task
-newTaskInput.addEventListener('keypress', function (e) {
+newTaskInput.addEventListener('keyup', function (e) {
   // start coding here
+  let timeoutVal = (e.target.value.length + 2000);
+
+
+  if (!isEmptyTask(e.target.value)) {
+    
+    setTimeout(() => {
+      addTask(e.target.value)
+    }, timeoutVal);
+
+  } else {
+    console.log('input field is empty.');
+  }
+  
 });
