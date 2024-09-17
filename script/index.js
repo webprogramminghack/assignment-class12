@@ -41,13 +41,33 @@ function render() {
   // Render each task from the array
   tasks.forEach((task) => {
     // start coding here
-    todoList.innerHTML += `<li>
-      <p>${task.text}</p>
-      <img
-        class="delete-icon"
-        src="/assets/svg/icon-delete.svg"
-        onclick="deleteTask('${task.id}')">
-      </li>`;
+
+    // hasil yg lama
+    // todoList.innerHTML += `<li>
+    //   <p>${task.text}</p>
+    //   <img
+    //     class="delete-icon"
+    //     src="/assets/svg/icon-delete.svg"
+    //     onclick="deleteTask('${task.id}')">
+    //   </li>`;
+
+    // pengerjaan baru
+    const newListItem = document.createElement('li');
+
+    const newParagraph = document.createElement('p');
+    newParagraph.setAttribute('id', task.id);
+    newParagraph.textContent = task.text;
+
+    const newDeleteImg = document.createElement('img');
+    newDeleteImg.setAttribute('class', 'delete-icon');
+    newDeleteImg.setAttribute('src', '/assets/svg/icon-delete.svg');
+    newDeleteImg.addEventListener('click', function () {
+      const thisPart = newDeleteImg.previousElementSibling;
+      deleteTask(thisPart.id);
+    });
+
+    newListItem.append(newParagraph, newDeleteImg);
+    todoList.append(newListItem);
   });
 }
 
